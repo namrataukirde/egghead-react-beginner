@@ -1,0 +1,34 @@
+<body>
+  <div id='root'></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+	<script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.6.1/prop-types.js"></script>
+  <script type='text/babel'>
+    const rootElement = document.getElementById('root')
+
+    function SayHello({firstName, lastName = 'unknown'}) {
+      return(
+        <div>
+          Hello {firstName} {lastName}
+        </div>
+      )
+    }
+
+    SayHello.propTypes = {
+      firstName: PropTypes.string,
+      lastName: PropTypes.string.isRequired
+    }
+    const element = <SayHello firstName={false} />
+    ReactDOM.render(element, rootElement)
+  </script>
+</body>
+
+<!-- To do the following react community has npm package so we directly used that in above code
+const PropTypes = {
+  string(props, propName, componentName){
+    if(typeof props[props] !== 'string') {
+      return new Error(`Hey, The component ${componentName} needs the ${propName} of type string but you passed ${typeof props[propName]} `)
+    }
+  }
+} -->
